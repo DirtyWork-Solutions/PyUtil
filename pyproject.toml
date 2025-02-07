@@ -3,9 +3,9 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pythings"
+name = "pyutil"
 version = "0.1.0"
-description = "A Python project for managing Things and their relationships."
+description = "A PyForge Ecosytem Python project"
 authors = [{name = "Aidan Hogg", email = "aidan.hogg@dirtywork.solutions"}]
 license = {file = "LICENSE.md"}
 readme = "README.md"
