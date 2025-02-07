@@ -1,5 +1,5 @@
 pip~=25.0
 setuptools
 wheel
-omegaconf
-loguru
+configparser~=7.1.0
+loguru~=0.7.3

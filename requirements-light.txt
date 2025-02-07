@@ -1,0 +1,2 @@
+omegaconf~=2.3.0
+omegaconf-argparse~=1.0.1
