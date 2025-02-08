@@ -14,7 +14,7 @@ class Reporter:  # TODO: expand from the generated base
         The logger object used to log messages.
     """
     def __init__(self):
-        self.logger = logger
+        self._logger = logger
 
     def report(self, message):
         """
@@ -25,7 +25,7 @@ class Reporter:  # TODO: expand from the generated base
         message : str
             The message to be logged.
         """
-        self.logger.info(message)
+        self._logger.info(message)
 
     def get_reporter(self, reporter: str = 'logger'):
         """
@@ -42,6 +42,6 @@ class Reporter:  # TODO: expand from the generated base
             The logger object.
         """
         if reporter == 'logger':
-            return self.logger
+            return self._logger
         else:
             raise PyUtilReportingError(f"Reporter '{reporter}' not found.")
