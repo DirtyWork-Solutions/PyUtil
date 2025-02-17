@@ -2,8 +2,8 @@
 Main entry point for reporting module.
 """
 
-from pyutil.reporting.logged import logger
-from pyutil.errors import PyUtilReportingError
+from src.pyutil.reporting.logged import logger
+from src.pyutil.errors import PyUtilReportingError
 class Reporter:  # TODO: expand from the generated base
     """
     A class used to report messages.
