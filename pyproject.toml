@@ -24,5 +24,3 @@ Documentation = "https://open.dirtywork.solutions/pytuil/docs"
 Source = "https://github.com/DirtyWork-Solutions/pytuil"
 Issues = "https://github.com/DirtyWork-Solutions/pytuil/tree/main/.github/ISSUE_TEMPLATE"
 
-[tool.setuptools.packages.find]
-where = ["src"]

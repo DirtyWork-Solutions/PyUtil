@@ -18,8 +18,7 @@ setup(
         'configparser~=7.1.0',
         'loguru~=0.7.3',
         'pyyaml~=6.0.2',
-        'omegaconf~=2.3.0',
-        'omegaconf-argparse~=1.0.1'
+        'omegaconf~=2.3.0'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
