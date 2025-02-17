@@ -53,7 +53,7 @@ def validate(config):
     try:
         with open(config, 'r') as f:
             config_data = yaml.safe_load(f)
-        from .pydantic_validator import validate_config, ConfigModel
+        from src.pyutil.config.validator import validate_config, ConfigModel
         validate_config(config_data, ConfigModel)
         click.echo("Configuration is valid!")
         logger.info("Configuration validation successful for {}", config)
@@ -64,7 +64,7 @@ def validate(config):
 @cli.command()
 def docs():
     """Generate and display the configuration documentation (JSON schema)."""
-    from .pydantic_validator import generate_docs, ConfigModel
+    from src.pyutil.config.validator import generate_docs, ConfigModel
     docs_json = generate_docs(ConfigModel)
     click.echo(docs_json)
     logger.info("Generated configuration documentation.")
