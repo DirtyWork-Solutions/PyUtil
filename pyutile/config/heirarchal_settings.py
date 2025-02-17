@@ -1,4 +1,4 @@
-from src.pyutil.config.settings import Settings, ConfigLoader
+from pyutile.config.settings import Settings, ConfigLoader
 from omegaconf import OmegaConf
 from loguru import logger
 

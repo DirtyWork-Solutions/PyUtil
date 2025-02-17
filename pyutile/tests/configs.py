@@ -1,5 +1,5 @@
-from src.pyutil.config.settings import Settings
-from src.pyutil.config.environment import EnvironmentConfig
+from pyutile.config.settings import Settings
+from pyutile.config.environment import EnvironmentConfig
 
 # Load configuration based on environment
 env_config = EnvironmentConfig()

@@ -3,8 +3,8 @@ import shutil
 import click
 import yaml
 from loguru import logger
-from src.pyutil.config.settings import Settings
-from src.pyutil.config.secure_settings import SecureConfig
+from pyutile.config.settings import Settings
+from pyutile.config.secure_settings import SecureConfig
 
 @click.group()
 def cli():
@@ -53,7 +53,7 @@ def validate(config):
     try:
         with open(config, 'r') as f:
             config_data = yaml.safe_load(f)
-        from src.pyutil.config.validator import validate_config, ConfigModel
+        from pyutile.config.validator import validate_config, ConfigModel
         validate_config(config_data, ConfigModel)
         click.echo("Configuration is valid!")
         logger.info("Configuration validation successful for {}", config)
@@ -64,7 +64,7 @@ def validate(config):
 @cli.command()
 def docs():
     """Generate and display the configuration documentation (JSON schema)."""
-    from src.pyutil.config.validator import generate_docs, ConfigModel
+    from pyutile.config.validator import generate_docs, ConfigModel
     docs_json = generate_docs(ConfigModel)
     click.echo(docs_json)
     logger.info("Generated configuration documentation.")

@@ -3,15 +3,19 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyutil"
-version = "0.1.0"
+name = "pyutile"
+version = "0.1.1"
 description = "A PyForge Ecosytem Python project"
-authors = [{name = "Aidan Hogg", email = "aidan.hogg@dirtywork.solutions"}]
+authors = [{name = "DirtyWork Solutions Limited", email = "pyutile@open.dirtywork.solutions"}]
 license = {file = "LICENSE.md"}
 readme = "README.md"
 dependencies = [
     "cachetools",
-    "pydantic"
+    "pydantic",
+    "configparser",
+    "pyyaml",
+    "omegaconf",
+    "loguru"
 ]
 
 [project.urls]

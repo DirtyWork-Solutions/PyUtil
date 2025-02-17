@@ -1,11 +1,11 @@
 from loguru import logger
-from src.pyutil.config import settings
-from src.pyutil.reporting import alerting
+from pyutile.config import settings
+from pyutile.reporting import alerting
 import sys
 
 class Logged:
     """Manages structured logging for PyUtil using Loguru,
-    configured via pyutil.config. Provides dynamic log level changes,
+    configured via pyutile.config. Provides dynamic log level changes,
     structured JSON logging, and alerting integration.
     """
 
@@ -14,7 +14,7 @@ class Logged:
         self._configure_logging()
 
     def _configure_logging(self):
-        """Loads logging settings from pyutil.config and applies them to Loguru."""
+        """Loads logging settings from pyutile.config and applies them to Loguru."""
         log_config = settings.settings.get("logging", {})
 
         # Use dynamic override if set; otherwise, default from config.
@@ -33,12 +33,12 @@ class Logged:
 
         # File Logging
         if log_config.get("file_logging", False):
-            log_file = log_config.get("file_path", "logs/pyutil.log")
+            log_file = log_config.get("file_path", "logs/pyutile.log")
             logger.add(log_file, rotation="10MB", retention="7 days", level=log_level, format=log_format, enqueue=True)
 
         # Structured JSON Logging
         if log_config.get("json_logging", False):
-            json_file = log_config.get("json_file_path", "logs/pyutil.json")
+            json_file = log_config.get("json_file_path", "logs/pyutile.json")
             logger.add(json_file, rotation="10MB", retention="7 days", level=log_level, serialize=True, enqueue=True)
 
         # Alerting Integration: trigger external alerts for ERROR and CRITICAL logs.

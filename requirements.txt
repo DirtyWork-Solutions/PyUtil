@@ -4,3 +4,4 @@ wheel~=0.45.1
 configparser~=7.1.0
 loguru~=0.7.3
 pyyaml~=6.0.2
+omegaconf~=2.3.0

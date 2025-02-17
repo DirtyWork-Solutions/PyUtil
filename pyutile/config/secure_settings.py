@@ -2,7 +2,7 @@ import os
 from cryptography.fernet import Fernet
 import yaml
 import json
-from src.pyutil.config.settings import Settings
+from pyutile.config.settings import Settings
 from omegaconf import OmegaConf
 from loguru import logger
 

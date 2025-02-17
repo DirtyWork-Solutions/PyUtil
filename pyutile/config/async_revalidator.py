@@ -3,7 +3,7 @@ import asyncio
 import yaml
 from loguru import logger
 
-from src.pyutil.config.validator import validate_config, ConfigModel
+from pyutile.config.validator import validate_config, ConfigModel
 
 
 async def revalidate_config(path: str):

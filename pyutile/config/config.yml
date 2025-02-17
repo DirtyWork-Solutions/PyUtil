@@ -111,8 +111,8 @@ logging:
   level: "DEBUG"
   console: true
   file_logging: true
-  file_path: "logs/pyutil.log"
+  file_path: "logs/pyutile.log"
   json_logging: true
-  json_file_path: "logs/pyutil.json"
+  json_file_path: "logs/pyutile.json"
   alerting: true
   format: "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"

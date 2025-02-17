@@ -1,6 +1,6 @@
 import time
 from functools import wraps
-from pyutil.reporting.logged import logger as log
+from pyutile.reporting.logged import logger as log
 
 def log_execution_time(func):
     """Decorator to log the execution time of a function."""

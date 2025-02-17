@@ -3,13 +3,13 @@ Collection of essential utilities across development and deployment
 
 ## Installation
 ```bash
-  pip install pyutil
+  pip install pyutile
 ```
 
 ## Usage
 
 ```python
-  from src.pyutil import *
+  from pyutile import *
 ```
 
 ## Utilities

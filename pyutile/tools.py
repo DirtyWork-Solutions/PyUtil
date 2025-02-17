@@ -1,5 +1,5 @@
-from src.pyutil.reporting.logged import log, log_manager
-from src.pyutil.reporting.metrics import log_execution_time
+from pyutile.reporting.logged import log, log_manager
+from pyutile.reporting.metrics import log_execution_time
 
 # Log messages at various levels.
 log.debug("Debugging information")
