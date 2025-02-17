@@ -3,6 +3,7 @@ import json
 import toml
 import yaml
 from pathlib import Path
+from loguru import logger
 
 class ConfigLoader:
     def __init__(self, config_paths=None):
@@ -14,6 +15,7 @@ class ConfigLoader:
         for path in self.config_paths:
             if Path(path).exists():
                 self._load_file(path)
+                logger.info("Loaded configuration from {}", path)
         return self.config_data
 
     def _load_file(self, path):

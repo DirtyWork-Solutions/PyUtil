@@ -1,12 +1,25 @@
+from pydantic import BaseModel, ValidationError
+from typing import Any, Dict
 
-from cerberus import Validator
+# Example configuration model; users can extend this model.
+class ConfigModel(BaseModel):
+    app_name: str = "MyApp"
+    database: Dict[str, Any] = {}
+    logging: Dict[str, Any] = {"level": "INFO", "handlers": []}
 
-class ConfigValidator:
-    def __init__(self, schema):
-        self.schema = schema
-        self.validator = Validator(schema)
+def validate_config(config: Dict[str, Any], model: BaseModel = ConfigModel) -> BaseModel:
+    """
+    Validate a configuration dictionary against the provided Pydantic model.
+    Raises ValueError if validation fails.
+    """
+    try:
+        validated_config = model(**config)
+        return validated_config
+    except ValidationError as e:
+        raise ValueError(f"Configuration validation error: {e}")
 
-    def validate(self, config):
-        """Validate a configuration dictionary against the schema."""
-        if not self.validator.validate(config):
-            raise ValueError(f"Invalid config: {self.validator.errors}")
+def generate_docs(model: BaseModel = ConfigModel) -> str:
+    """
+    Generate JSON schema documentation for the configuration model.
+    """
+    return model.schema_json(indent=2)
