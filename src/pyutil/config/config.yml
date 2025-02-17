@@ -1,3 +1,112 @@
+work:
+  general:
+    enable_logging: true # Enable/disable logging
+    log_level: "INFO" # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+    async_mode: true # Default async execution mode for tasks
+    max_concurrent_tasks: 10 # Global concurrency limit (useful for pools & executors)
+    monitoring_enabled: true # Enable task/job monitoring system
+    default_priority: 5 # Default priority for tasks/jobs (higher runs first)
+
+  task:
+    default_timeout: 30 # Default timeout for task execution (seconds)
+    allow_cancellation: true # Allow tasks to be cancelled
+    dependency_execution_mode: "parallel" # Options: "parallel", "sequential"
+
+  job:
+    max_parallel_jobs: 5 # Maximum number of parallel jobs
+    job_queue_type: "priority" # Options: FIFO, LIFO, priority
+    job_lifetime: 600 # Maximum job execution time before expiration (seconds)
+
+  worker:
+    max_workers: 4 # Default number of worker threads
+    scaling:
+      auto_scale: true # Enable auto-scaling of worker pool
+      min_workers: 2
+      max_workers: 10
+      scale_factor: 1.5 # Scale by 1.5x when load exceeds threshold
+
+  queue:
+    type: "priority" # Options: FIFO, LIFO, priority
+    max_queue_size: 1000 # Max tasks/jobs allowed in the queue
+    processing_mode: "batch" # Options: "single", "batch"
+    batch_size: 10 # Number of tasks processed per batch (if batch mode enabled)
+
+  pool:
+    type: "thread" # Options: "thread", "process"
+    max_pool_size: 10 # Maximum concurrent tasks in pool
+    auto_scale: true # Enable dynamic scaling
+    min_pool_size: 2
+    scale_threshold: 80 # Scale pool when usage exceeds 80%
+    pool_timeout: 300 # Maximum time a process/thread is kept alive
+
+  executor:
+    strategy: "async" # Default execution strategy; Options: sync, async, deferred
+    deferred_delay: 5 # Delay before deferred tasks execute (seconds)
+
+  retry:
+    enabled: true # Enable retry mechanisms
+    max_retries: 5
+    backoff_strategy: "exponential" # Options: fixed, exponential
+    jitter_enabled: true # Add random jitter to avoid request flooding
+    circuit_breaker:
+      enabled: true
+      failure_threshold: 3 # Disable retries after 3 consecutive failures
+      reset_timeout: 60 # Time before retries are allowed again (seconds)
+
+  monitoring:
+    enable_metrics: true # Enable performance monitoring
+    log_task_duration: true # Log how long each task takes
+    log_failed_tasks: true # Log task failures
+    metrics:
+      store_backend: "memory" # Options: memory, database, external_api
+      flush_interval: 60 # Flush monitoring data every 60 seconds
+      database_uri: "sqlite:///pyutil_metrics.db" # If using database storage
+
+  priority:
+    levels:
+      HIGH: 10
+      MEDIUM: 5
+      LOW: 1
+    default_level: "MEDIUM"
+
+  utils:
+    timeout_enabled: true # Enable timeout functionality globally
+    rate_limit:
+      enabled: true
+      max_calls: 100 # Max calls per time window
+      time_window: 60 # Time window in seconds
+
+  scheduler:
+    enabled: true
+    default_type: "cron" # Options: "cron", "periodic", "event"
+
+    cron:
+      auto_start: true # Automatically start the cron scheduler
+      polling_interval: 1 # Check for jobs every 1 second
+      max_scheduled_jobs: 1000 # Limit of scheduled jobs
+
+    periodic:
+      default_interval: 10 # Default interval for periodic jobs (seconds)
+      max_running_tasks: 5 # Maximum periodic tasks running at once
+
+    event:
+      auto_listen: true # Auto-register event listeners
+      event_trigger_mode: "async" # Options: sync, async
+      event_buffer_size: 500 # Max events stored before being flushed
+
+  extensions:
+    pyextend_integration: true # Enable PyExtend-based event hooks
+    external_event_triggers: false # Allow external systems to trigger jobs via events
+    remote_execution:
+      enabled: false # Enable distributed job execution
+      node_discovery: "manual" # Options: "manual", "automatic"
+      max_remote_nodes: 5 # Maximum number of remote execution nodes
+      communication_protocol: "websockets" # Options: "http", "websockets", "rpc"
+
+  security:
+    sandboxing: false # Enable sandboxing for external jobs/extensions
+    allowed_functions: [] # Define explicitly allowed functions
+    max_memory_usage: 256 # Max MB a single task/job can use
 logging:
   level: "DEBUG"
   console: true
