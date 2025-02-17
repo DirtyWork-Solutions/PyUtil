@@ -7,8 +7,9 @@ Collection of essential utilities across development and deployment
 ```
 
 ## Usage
+
 ```python
-  from pyutil import *
+  from src.pyutil import *
 ```
 
 ## Utilities
