@@ -24,11 +24,11 @@ class Settings:
 
     @property
     def all(self):
-        all_settings = {}
+        all_settings = DictConfig({})
         for key in self._config.keys():
             all_settings.update(self._config.get(key))
 
-        return DictConfig(all_settings)
+        return all_settings
 
 # Global settings instance
 settings = Settings().all
