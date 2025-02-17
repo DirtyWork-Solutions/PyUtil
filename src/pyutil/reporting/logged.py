@@ -1,26 +1,30 @@
-"""
-This module is used to log messages. It uses either; the loguru or python native library to log messages.
-"""
-
 from loguru import logger
 from src.pyutil.config import settings
+from src.pyutil.reporting import alerting
 import sys
 
 class Logged:
-    """Manages structured logging for PyUtil using Loguru, configured via pyutil.config."""
+    """Manages structured logging for PyUtil using Loguru,
+    configured via pyutil.config. Provides dynamic log level changes,
+    structured JSON logging, and alerting integration.
+    """
 
     def __init__(self):
+        self._current_log_level = None
         self._configure_logging()
 
     def _configure_logging(self):
         """Loads logging settings from pyutil.config and applies them to Loguru."""
-        log_config = settings.get("logging", {}) # Load logging settings from config
+        log_config = settings.settings.get("logging", {})
 
-        # Default log level and format
-        log_level = log_config.get("level", "INFO").upper()
-        log_format = log_config.get("format", "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>")
+        # Use dynamic override if set; otherwise, default from config.
+        log_level = self._current_log_level if self._current_log_level else log_config.get("level", "INFO").upper()
+        log_format = log_config.get(
+            "format",
+            "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+        )
 
-        # Remove default handlers before configuring custom ones
+        # Remove all previously added sinks.
         logger.remove()
 
         # Console Logging
@@ -28,14 +32,28 @@ class Logged:
             logger.add(sys.stderr, format=log_format, level=log_level, enqueue=True, colorize=True)
 
         # File Logging
-        log_file = log_config.get("file_path", "logs/pyutil.log")
         if log_config.get("file_logging", False):
+            log_file = log_config.get("file_path", "logs/pyutil.log")
             logger.add(log_file, rotation="10MB", retention="7 days", level=log_level, format=log_format, enqueue=True)
+
+        # Structured JSON Logging
+        if log_config.get("json_logging", False):
+            json_file = log_config.get("json_file_path", "logs/pyutil.json")
+            logger.add(json_file, rotation="10MB", retention="7 days", level=log_level, serialize=True, enqueue=True)
+
+        # Alerting Integration: trigger external alerts for ERROR and CRITICAL logs.
+        if log_config.get("alerting", False):
+            logger.add(alerting.alert_sink, level="ERROR", enqueue=True)
+
+    def set_log_level(self, new_level: str):
+        """Dynamically changes the log level at runtime."""
+        self._current_log_level = new_level.upper()
+        self._configure_logging()
 
     def get_logger(self):
         """Returns the configured Loguru logger."""
         return logger
 
-# Instantiate logging manager
+# Instantiate logging manager and expose the logger instance.
 log_manager = Logged()
 log = log_manager.get_logger()

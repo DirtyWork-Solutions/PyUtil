@@ -3,4 +3,7 @@ logging:
   console: true
   file_logging: true
   file_path: "logs/pyutil.log"
+  json_logging: true
+  json_file_path: "logs/pyutil.json"
+  alerting: true
   format: "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
