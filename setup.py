@@ -20,9 +20,4 @@ setup(
         'pyyaml~=6.0.2',
         'omegaconf~=2.3.0'
     ],
-    classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-    ],
 )

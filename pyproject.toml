@@ -7,20 +7,13 @@ name = "pyutile"
 version = "0.1.1"
 description = "A PyForge Ecosytem Python project"
 authors = [{name = "DirtyWork Solutions Limited", email = "pyutile@open.dirtywork.solutions"}]
-license = {file = "LICENSE.md"}
+license = {file = "LICENSE"}
 readme = "README.md"
-dependencies = [
-    "cachetools",
-    "pydantic",
-    "configparser",
-    "pyyaml",
-    "omegaconf",
-    "loguru"
-]
+
 
 [project.urls]
-Homepage = "https://open.dirtywork.solutions/pytuil/"
-Documentation = "https://open.dirtywork.solutions/pytuil/docs"
+Homepage = "https://open.dirtywork.solutions/pytuile/"
+Documentation = "https://open.dirtywork.solutions/pytuile/docs"
 Source = "https://github.com/DirtyWork-Solutions/pytuil"
 Issues = "https://github.com/DirtyWork-Solutions/pytuil/tree/main/.github/ISSUE_TEMPLATE"
 
