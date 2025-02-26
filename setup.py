@@ -9,8 +9,8 @@ setup(
     author='DirtyWork Solutions Limited',
     author_email='pyutile@open.dirtywork.solutions',
     url='https://github.com/DirtyWork-Solutions/pyutil',
-    packages=find_packages(where='src'),
-    package_dir={'': 'src'},
+    packages=find_packages(),
+    package_dir={},
     install_requires=[
         'pip~=25.0',
         'setuptools~=75.8.0',
