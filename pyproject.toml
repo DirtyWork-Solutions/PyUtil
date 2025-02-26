@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyutile"
-version = "0.1.1"
-description = "A PyForge Ecosytem Python project"
+version = "0.1.2"
+description = "A PyForge Ecosytem project"
 authors = [{name = "DirtyWork Solutions Limited", email = "pyutile@open.dirtywork.solutions"}]
 license = {file = "LICENSE"}
 readme = "README.md"
@@ -13,7 +13,7 @@ readme = "README.md"
 
 [project.urls]
 Homepage = "https://open.dirtywork.solutions/pytuile/"
-Documentation = "https://open.dirtywork.solutions/pytuile/docs"
-Source = "https://github.com/DirtyWork-Solutions/pytuil"
-Issues = "https://github.com/DirtyWork-Solutions/pytuil/tree/main/.github/ISSUE_TEMPLATE"
+Documentation = "https://github.com/DirtyWork-Solutions/pytuile/docs"
+Source = "https://github.com/DirtyWork-Solutions/pytuile"
+Issues = "https://github.com/DirtyWork-Solutions/pytuile/tree/main/.github/ISSUE_TEMPLATE"
 
